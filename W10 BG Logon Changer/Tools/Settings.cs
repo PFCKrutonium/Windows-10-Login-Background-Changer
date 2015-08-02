@@ -8,7 +8,7 @@ namespace W10_BG_Logon_Changer.Tools
 {
     public static class Settings
     {
-        private static SerializableDictionary<string, object> _settingsObject; 
+        private static SerializableDictionary<string, object> _settingsObject;
 
         public static void Save()
         {
@@ -31,7 +31,7 @@ namespace W10_BG_Logon_Changer.Tools
                     using (FileStream fileStream = new FileStream(Config.SettingsFilePath, FileMode.Open))
                     {
                         IFormatter bf = new BinaryFormatter();
-                        _settingsObject = (SerializableDictionary<string, object>) bf.Deserialize(fileStream);
+                        _settingsObject = (SerializableDictionary<string, object>)bf.Deserialize(fileStream);
                     }
                 }
                 catch (System.Exception e)
@@ -41,7 +41,7 @@ namespace W10_BG_Logon_Changer.Tools
             }
             if (_settingsObject == null)
             {
-                 _settingsObject = new SerializableDictionary<string, object>();
+                _settingsObject = new SerializableDictionary<string, object>();
             }
         }
 
@@ -50,7 +50,7 @@ namespace W10_BG_Logon_Changer.Tools
             if (!_settingsObject.ContainsKey(key)) return @default;
             if (_settingsObject[key] != null)
             {
-                return (T) _settingsObject[key];
+                return (T)_settingsObject[key];
             }
 
             return @default;

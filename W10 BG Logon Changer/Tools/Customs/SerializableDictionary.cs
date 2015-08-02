@@ -11,12 +11,16 @@ namespace W10_BG_Logon_Changer.Tools.Customs
     public class SerializableDictionary<TKey, TVal> : Dictionary<TKey, TVal>, IXmlSerializable, ISerializable
     {
         #region Constants
+
         private const string DictionaryNodeName = "Dictionary";
         private const string ItemNodeName = "Item";
         private const string KeyNodeName = "Key";
         private const string ValueNodeName = "Value";
-        #endregion
+
+        #endregion Constants
+
         #region Constructors
+
         public SerializableDictionary()
         {
         }
@@ -46,7 +50,8 @@ namespace W10_BG_Logon_Changer.Tools.Customs
         {
         }
 
-        #endregion
+        #endregion Constructors
+
         #region ISerializable Members
 
         protected SerializableDictionary(SerializationInfo info, StreamingContext context)
@@ -70,7 +75,8 @@ namespace W10_BG_Logon_Changer.Tools.Customs
             }
         }
 
-        #endregion
+        #endregion ISerializable Members
+
         #region IXmlSerializable Members
 
         void IXmlSerializable.WriteXml(XmlWriter writer)
@@ -127,21 +133,27 @@ namespace W10_BG_Logon_Changer.Tools.Customs
             return null;
         }
 
-        #endregion
+        #endregion IXmlSerializable Members
+
         #region Private Properties
+
         protected XmlSerializer ValueSerializer
         {
-            get { return _valueSerializer ?? (_valueSerializer = new XmlSerializer(typeof (TVal))); }
+            get { return _valueSerializer ?? (_valueSerializer = new XmlSerializer(typeof(TVal))); }
         }
 
         private XmlSerializer KeySerializer
         {
-            get { return _keySerializer ?? (_keySerializer = new XmlSerializer(typeof (TKey))); }
+            get { return _keySerializer ?? (_keySerializer = new XmlSerializer(typeof(TKey))); }
         }
-        #endregion
+
+        #endregion Private Properties
+
         #region Private Members
+
         private XmlSerializer _keySerializer;
         private XmlSerializer _valueSerializer;
-        #endregion
+
+        #endregion Private Members
     }
 }

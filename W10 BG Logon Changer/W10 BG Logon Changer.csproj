@@ -39,6 +39,9 @@
   <PropertyGroup>
     <ApplicationIcon>Eula.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>W10_BG_Logon_Changer.App</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="MahApps.Metro">
       <HintPath>..\packages\MahApps.Metro.1.1.2.0\lib\net45\MahApps.Metro.dll</HintPath>

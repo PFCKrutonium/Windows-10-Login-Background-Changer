@@ -19,6 +19,5 @@ namespace W10_BG_Logon_Changer
 
         public static readonly string SettingsFilePath =
             Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "W10LogonChanger", SettingsFile);
-
     }
 }

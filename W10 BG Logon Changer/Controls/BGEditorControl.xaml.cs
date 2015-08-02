@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MahApps.Metro.Controls;
+using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -9,7 +10,6 @@ using System.Windows.Controls;
 using System.Windows.Forms;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using MahApps.Metro.Controls;
 using W10_BG_Logon_Changer.Tools;
 using W10_BG_Logon_Changer.Tools.UserColorHandler;
 using Brush = System.Windows.Media.Brush;
@@ -110,6 +110,27 @@ namespace W10_BG_Logon_Changer.Controls
             ColorPreview.Background = sd;
 
             SelectedFile.Text = "Background filename will appear here.";
+
+            Color clr = cfd.Color;
+
+            int r = 0;
+            int g = 0;
+            int b = 0;
+
+            r = Convert.ToInt32(clr.R);
+            g = Convert.ToInt32(clr.G);
+            b = Convert.ToInt32(clr.B);
+
+            int rgb = r + g + b;
+
+            if (rgb > 382)
+            {
+                pickColor.Foreground = new SolidColorBrush(Colors.Black);
+            }
+            else
+            {
+                pickColor.Foreground = new SolidColorBrush(Colors.White);
+            }
         }
 
         private void RestoreDefaults_Click(object sender, RoutedEventArgs e)
