@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -11,7 +12,6 @@ using System.Windows.Forms;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using TSettings;
-using W10_BG_Logon_Changer.Tools;
 using W10_BG_Logon_Changer.Tools.UserColorHandler;
 using Brush = System.Windows.Media.Brush;
 using Button = System.Windows.Controls.Button;
@@ -183,9 +183,28 @@ namespace W10_BG_Logon_Changer.Controls
             DrawFilledRectangle(1024, 1024, new SolidBrush(Color.Transparent)).Save(f, ImageFormat.Png);
 
             _mainWindow.SelectedFile = f;
-            var c = ColorFunctions.GetImmersiveColor(ImmersiveColors.ImmersiveStartBackground);
+            Color c = ColorFunctions.GetImmersiveColor(ImmersiveColors.ImmersiveStartBackground);
 
             Reset(FillImageColor(c));
+
+            string hex = ColorTranslator.ToHtml(Color.FromArgb(c.ToArgb()));
+
+
+            var converter = new System.Windows.Media.BrushConverter();
+            var fillcolor = (Brush)converter.ConvertFromString(hex);
+
+            ColorPreview.Background = fillcolor;
+
+            var clr = c;
+
+            var r = Convert.ToInt32(clr.R);
+            var g = Convert.ToInt32(clr.G);
+            var b = Convert.ToInt32(clr.B);
+
+            var rgb = r + g + b;
+
+            pickColor.Foreground = rgb > 382 ? new SolidColorBrush(Colors.Black) : new SolidColorBrush(Colors.White);
+
         }
 
         private void RestoreHeroDefaults_Click(object sender, RoutedEventArgs e)

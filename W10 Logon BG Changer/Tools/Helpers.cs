@@ -2,7 +2,7 @@
 
 namespace W10_BG_Logon_Changer.Tools
 {
-    class Helpers
+    internal class Helpers
     {
         public static bool IsBackgroundDisabled()
         {
@@ -12,7 +12,7 @@ namespace W10_BG_Logon_Changer.Tools
                 var o = key.GetValue("DisableLogonBackgroundImage");
                 if (o != null)
                 {
-                    return o.ToString() == "1" || (int) o == 1;
+                    return o.ToString() == "1" || (int)o == 1;
                 }
             }
 
