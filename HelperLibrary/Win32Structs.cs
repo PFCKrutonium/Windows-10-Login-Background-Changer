@@ -1,18 +1,22 @@
+using System;
 using System.Runtime.InteropServices;
 
 namespace Microsoft.Win32.Security.Win32Structs
 {
+    using DWORD = UInt32;
+    using LONG = Int32;
+
     [StructLayout(LayoutKind.Sequential)]
     public struct LUID
     {
-        public uint LowPart;
-        public int HighPart;
+        public DWORD LowPart;
+        public LONG HighPart;
     }
 
     [StructLayout(LayoutKind.Sequential)]
     public struct TOKEN_PRIVILEGES
     {
-        public uint PrivilegeCount;
+        public DWORD PrivilegeCount;
         // Followed by this:
         //LUID_AND_ATTRIBUTES Privileges[ANYSIZE_ARRAY];
     }
@@ -21,6 +25,6 @@ namespace Microsoft.Win32.Security.Win32Structs
     public struct LUID_AND_ATTRIBUTES
     {
         public LUID Luid;
-        public uint Attributes;
+        public DWORD Attributes;
     }
 }

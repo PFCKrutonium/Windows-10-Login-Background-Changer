@@ -3,9 +3,11 @@ using System.Runtime.InteropServices;
 
 namespace Microsoft.Win32.Security
 {
+    using BOOL = Int32;
+
     /// <summary>
-    ///     Encapsulation of a Win32 token handle.
-    ///     The object is disposable because it maintains the Win32 handle.
+    ///  Encapsulation of a Win32 token handle.
+    ///  The object is disposable because it maintains the Win32 handle.
     /// </summary>
     public abstract class AccessToken : DisposableObject
     {
@@ -23,20 +25,18 @@ namespace Microsoft.Win32.Security
             {
                 // We don't want to throw an exception here, because there's not
                 // much we can do when failing to close a handle.
-                var rc = Win32.CloseHandle(_handle);
+                BOOL rc = Win32.CloseHandle(_handle);
                 if (rc != Win32.FALSE)
                     _handle = IntPtr.Zero;
             }
         }
 
         /// <summary>
-        ///     Enable a single privilege on the process.
+        /// Enable a single privilege on the process.
         /// </summary>
         /// <param name="privilege"></param>
-        /// <exception cref="">
-        ///     Throws an exception if the privilege is not present
-        ///     in the privilege list of the process
-        /// </exception>
+        /// <exception cref="">Throws an exception if the privilege is not present
+        ///  in the privilege list of the process</exception>
         public void EnablePrivilege(TokenPrivilege privilege)
         {
             var privs = new TokenPrivileges { privilege };
@@ -50,14 +50,14 @@ namespace Microsoft.Win32.Security
 
         private unsafe void UnsafeEnableDisablePrivileges(TokenPrivileges privileges)
         {
-            var privBytes = privileges.GetNativeTokenPrivileges();
+            byte[] privBytes = privileges.GetNativeTokenPrivileges();
             fixed (byte* priv = privBytes)
             {
-                uint cbLength;
+                UInt32 cbLength;
 
                 Win32.SetLastError(Win32.SUCCESS);
 
-                var rc = Win32.AdjustTokenPrivileges(
+                BOOL rc = Win32.AdjustTokenPrivileges(
                     _handle,
                     Win32.FALSE,
                     (IntPtr)priv,
@@ -75,7 +75,7 @@ namespace Microsoft.Win32.Security
     }
 
     /// <summary>
-    ///     Access token for a process
+    ///  Access token for a process
     /// </summary>
     public class AccessTokenProcess : AccessToken
     {
@@ -86,7 +86,7 @@ namespace Microsoft.Win32.Security
 
         private static IntPtr TryOpenProcessToken(int pid, TokenAccessType desiredAccess)
         {
-            var processHandle = Win32.OpenProcess(
+            IntPtr processHandle = Win32.OpenProcess(
                 ProcessAccessType.PROCESS_QUERY_INFORMATION,
                 Win32.FALSE,
                 (uint)pid);
@@ -96,7 +96,7 @@ namespace Microsoft.Win32.Security
             try
             {
                 IntPtr handle;
-                var rc = Win32.OpenProcessToken(processHandle, desiredAccess, out handle);
+                BOOL rc = Win32.OpenProcessToken(processHandle, desiredAccess, out handle);
                 if (rc == Win32.FALSE)
                     return IntPtr.Zero;
                 return handle;
@@ -109,7 +109,7 @@ namespace Microsoft.Win32.Security
 
         private static IntPtr OpenProcessToken(int pid, TokenAccessType desiredAccess)
         {
-            var handle = TryOpenProcessToken(pid, desiredAccess);
+            IntPtr handle = TryOpenProcessToken(pid, desiredAccess);
             if (handle == IntPtr.Zero)
                 Win32.ThrowLastError();
             return handle;
