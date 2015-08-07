@@ -4,8 +4,10 @@ using System.Runtime.InteropServices;
 
 namespace Microsoft.Win32.Security
 {
+    using BOOL = Int32;
+
     /// <summary>
-    ///     Summary description for TokenPrivilege.
+    /// Summary description for TokenPrivilege.
     /// </summary>
     public class TokenPrivilege
     {
@@ -37,13 +39,14 @@ namespace Microsoft.Win32.Security
         public const string SE_SYNC_AGENT_NAME = "SeSyncAgentPrivilege";
         public const string SE_ENABLE_DELEGATION_NAME = "SeEnableDelegationPrivilege";
         public const string SE_MANAGE_VOLUME_NAME = "SeManageVolumePrivilege";
+
         private readonly PrivilegeAttributes _attributes;
         private readonly Luid _luid;
 
         public TokenPrivilege(string systemName, string privilege, bool enabled)
         {
             LUID luid;
-            var rc = Win32.LookupPrivilegeValue(systemName, privilege, out luid);
+            BOOL rc = Win32.LookupPrivilegeValue(systemName, privilege, out luid);
             Win32.CheckCall(rc);
 
             _luid = new Luid(luid);

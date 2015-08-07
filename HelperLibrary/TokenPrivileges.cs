@@ -7,18 +7,18 @@ using System.Runtime.InteropServices;
 namespace Microsoft.Win32.Security
 {
     /// <summary>
-    ///     Summary description for TokenPrivileges.
+    /// Summary description for TokenPrivileges.
     /// </summary>
     public class TokenPrivileges : CollectionBase
     {
         public TokenPrivilege this[int index]
         {
-            get { return (TokenPrivilege)InnerList[index]; }
+            get { return (TokenPrivilege)base.InnerList[index]; }
         }
 
         public void Add(TokenPrivilege privilege)
         {
-            InnerList.Add(privilege);
+            base.InnerList.Add(privilege);
         }
 
         public unsafe byte[] GetNativeTokenPrivileges()
@@ -28,7 +28,7 @@ namespace Microsoft.Win32.Security
             TOKEN_PRIVILEGES tp;
             tp.PrivilegeCount = (uint)Count;
 
-            var cbLength =
+            int cbLength =
                 Marshal.SizeOf(typeof(TOKEN_PRIVILEGES)) +
                 Marshal.SizeOf(typeof(LUID_AND_ATTRIBUTES)) * Count;
             var res = new byte[cbLength];
@@ -37,10 +37,10 @@ namespace Microsoft.Win32.Security
                 Marshal.StructureToPtr(tp, (IntPtr)privs, false);
             }
 
-            var resOffset = Marshal.SizeOf(typeof(TOKEN_PRIVILEGES));
-            for (var i = 0; i < Count; i++)
+            int resOffset = Marshal.SizeOf(typeof(TOKEN_PRIVILEGES));
+            for (int i = 0; i < Count; i++)
             {
-                var luida = this[i].GetNativeLUID_AND_ATTRIBUTES();
+                byte[] luida = this[i].GetNativeLUID_AND_ATTRIBUTES();
                 Array.Copy(luida, 0, res, resOffset, luida.Length);
                 resOffset += luida.Length;
             }
