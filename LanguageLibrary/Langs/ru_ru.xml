@@ -14,7 +14,7 @@
   <main_top_about>О программе</main_top_about>
   <main_top_lock>Заблокировать Windows</main_top_lock>
   <main_top_edit>Редактировать фон</main_top_edit>
-  <main_top_sel_lang>Выбрать язык</main_top_sel_lang>
+  <sel_lang>Выбрать язык</sel_lang>
   <flyout_edit_title>Выбрать фон</flyout_edit_title>
   <flyout_about_title>Подробнее</flyout_about_title>
   <group_restore_default>Вернуть по умолчанию</group_restore_default>

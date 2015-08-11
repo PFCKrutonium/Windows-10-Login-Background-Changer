@@ -19,7 +19,7 @@
   <main_top_about>关于</main_top_about>
   <main_top_lock>锁定 Windows</main_top_lock>
   <main_top_edit>编辑背景</main_top_edit>
-  <main_top_sel_lang>选择语言</main_top_sel_lang>
+  <sel_lang>选择语言</sel_lang>
 
   <!-- Flyout Titles -->
   <flyout_edit_title>编辑背景</flyout_edit_title>

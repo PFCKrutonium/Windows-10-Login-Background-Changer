@@ -7,7 +7,7 @@
                       NonActiveGlowBrush="{DynamicResource AccentColorBrush2}"
                       BorderBrush="{DynamicResource AccentColorBrush}"
                       BorderThickness="1"
-                      
+
                       Title="W10 Logon BG Changer" Height="600" Width="1008"
                       MinHeight="500" MinWidth="830" WindowStartupLocation="CenterScreen">
 
@@ -25,7 +25,7 @@
                     </Rectangle>
                     <TextBlock Margin="4 0 0 0"
                                VerticalAlignment="Center"
-                               Text="App Settings" />
+                               Text="Settings" />
                 </StackPanel>
             </Button>
             <Button Click="AboutButton_Click" x:Name="AboutButton" Content="About" />
@@ -53,7 +53,7 @@
                                Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
                         <Rectangle.OpacityMask>
                             <VisualBrush Stretch="Fill"
-                                         Visual="{StaticResource appbar_edit}" />
+                                         Visual="{StaticResource appbar_edit_box}" />
                         </Rectangle.OpacityMask>
                     </Rectangle>
                     <TextBlock x:Name="EditBackgroundLabel" Margin="4 0 0 0"
@@ -61,7 +61,6 @@
                                Text="Edit Background" />
                 </StackPanel>
             </Button>
-
         </controls:WindowCommands>
     </controls:MetroWindow.RightWindowCommands>
     <controls:MetroWindow.Flyouts>
