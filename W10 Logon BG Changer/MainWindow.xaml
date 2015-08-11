@@ -25,7 +25,7 @@
                     </Rectangle>
                     <TextBlock Margin="4 0 0 0"
                                VerticalAlignment="Center"
-                               Text="Settings" />
+                               Text="App Settings" />
                 </StackPanel>
             </Button>
             <Button Click="AboutButton_Click" x:Name="AboutButton" Content="About" />

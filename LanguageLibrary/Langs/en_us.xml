@@ -20,7 +20,6 @@
   <main_top_about>About</main_top_about>
   <main_top_lock>Lock Windows</main_top_lock>
   <main_top_edit>Edit Background</main_top_edit>
-  <main_top_settings>App Settings</main_top_settings>
 
   <!-- Flyout Titles -->
   <flyout_edit_title>Edit Background</flyout_edit_title>

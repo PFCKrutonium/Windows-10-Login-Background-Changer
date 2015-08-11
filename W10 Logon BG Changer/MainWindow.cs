@@ -137,6 +137,7 @@ namespace W10_Logon_BG_Changer
             SettingFlyout.Header = LanguageLibrary.Language.Default.flyout_edit_title;
             AboutFlyout.Header = LanguageLibrary.Language.Default.flyout_about_title;
             ApplicationSettingsFlyout.Header = LanguageLibrary.Language.Default.flyout_settings_title;
+            ApplicationSettings.Content = LanguageLibrary.Language.Default.flyout_settings_title;
         }
 
         public string SelectedFile
