@@ -15,9 +15,10 @@ namespace W10_Logon_BG_Changer___Command_Line
         private static void Main(string[] args)
         {
             TakeOwnership();
+
             foreach (var arg in args)
             {
-                switch (arg.Substring(0, 2).ToUpper())
+                switch (arg.Substring(0, 3).ToUpper())
                 {
                     case "/A":
                         try
@@ -35,10 +36,12 @@ namespace W10_Logon_BG_Changer___Command_Line
                             Console.WriteLine(@"An error occurred: '{0}'", e);
                             Console.ForegroundColor = ConsoleColor.White;
                         }
-                        break;
+                        return;
 
                     case "/C":
+
                         var hex = arg.Substring(2);
+
                         try
                         {
                             if (hex.IsHex())
@@ -63,8 +66,10 @@ namespace W10_Logon_BG_Changer___Command_Line
                             }
                             else
                             {
+                                Console.ForegroundColor = ConsoleColor.Red;
                                 Console.WriteLine("");
                                 Console.WriteLine(@"""{0}"" is not a valid hex color code!", hex);
+                                Console.ForegroundColor = ConsoleColor.White;
                             }
                         }
                         catch (Exception e)
@@ -74,7 +79,7 @@ namespace W10_Logon_BG_Changer___Command_Line
                             Console.WriteLine(@"An error occurred: '{0}'", e);
                             Console.ForegroundColor = ConsoleColor.White;
                         }
-                        break;
+                        return;
 
                     case "/H":
                         Console.WriteLine("");
@@ -86,7 +91,7 @@ namespace W10_Logon_BG_Changer___Command_Line
                         Console.WriteLine("IMAGE - /I [IMAGE PATH]");
                         Console.WriteLine("RESTORE - /R");
                         Console.WriteLine("HELP - /H");
-                        break;
+                        return;
 
                     case "/I":
                         var filedir = arg.Substring(2);
@@ -117,7 +122,7 @@ namespace W10_Logon_BG_Changer___Command_Line
                             Console.WriteLine(@"An error occurred: '{0}'", e);
                             Console.ForegroundColor = ConsoleColor.White;
                         }
-                        break;
+                        return;
 
                     case "/R":
                         try
@@ -135,15 +140,17 @@ namespace W10_Logon_BG_Changer___Command_Line
                             Console.WriteLine(@"An error occurred: '{0}'", e);
                             Console.ForegroundColor = ConsoleColor.White;
                         }
-                        break;
+                        return;
 
                     default:
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("");
                         Console.WriteLine(
                             @"Please format your command as shown: exe [/A|/C|/H|/I|/R] [/CHEX CODE|/IFILE PATH]");
                         Console.WriteLine("");
                         Console.WriteLine(@"Press any key to exit.");
-                        Console.ReadKey();
+                        Console.ReadKey(true);
+                        Console.ForegroundColor = ConsoleColor.White;
                         break;
                 }
             }
