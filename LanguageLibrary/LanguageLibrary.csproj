@@ -70,19 +70,19 @@
     <EmbeddedResource Include="Langs\th_th.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Langs\fr_fr.xml" />
+    <EmbeddedResource Include="Langs\it_it.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SharedLibrary\SharedLibrary.csproj">
-      <Project>{09C77C13-2EF9-4617-B040-6C8493FBB365}</Project>
-      <Name>SharedLibrary</Name>
-    </ProjectReference>
+    <EmbeddedResource Include="Langs\fr_fr.xml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Langs\zh_cn.xml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Langs\he_il.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Langs\be_nl.xml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Langs\ru_ru.xml" />
@@ -94,10 +94,13 @@
     <EmbeddedResource Include="Langs\ko_kr.xml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
+    <ProjectReference Include="..\SharedLibrary\SharedLibrary.csproj">
+      <Project>{09C77C13-2EF9-4617-B040-6C8493FBB365}</Project>
+      <Name>SharedLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Langs\be_nl.xml" />
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Langs\it_it.xml" />
@@ -106,7 +109,7 @@
     <EmbeddedResource Include="Langs\de_de.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it... 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
