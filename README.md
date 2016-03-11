@@ -27,6 +27,7 @@ While we can't guarantee it will work, it does seem to work on at least the foll
 The project was founded by Krutonium, though he hasn't done much on it in a while;  
 The project has been completely overhauled and revamped by Toyz, much to Krutoniums' delight;  
 The project has been helped immesely by darth62969, since Krutonium and Toyz are busy and bug reports take time;  
+The project has been helped by DarkBlood23 he added only a Bulgarian translation, but still he helped!
 The project is happy to have anyone who joins add themselves here;  
 The project is alive ;)  
 
