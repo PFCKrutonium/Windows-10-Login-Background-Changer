@@ -17,9 +17,9 @@
 ## Windows Insider Preview Builds:
 While we can't guarantee it will work, it does seem to work on at least the following build(s):
 
-* All of them so far _except_ build 14279. If you are on 14279 or later, please use the built in tool in the settings.
+* All of them so far _except_ build 14279. If you are on 14279 or later, please use the build in tool in the settings.
 
-## Windows 10 TH2 (Build 10856.11)
+## Windows 10 TH2 (Build 10540)
 
 * Works!
 
